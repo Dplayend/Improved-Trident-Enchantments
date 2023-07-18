@@ -63,7 +63,7 @@ public class MixTridentItem {
                     k *= n / m;
                     l *= n / m;
                     playerEntity.addVelocity(h, k, l);
-                    playerEntity.useRiptide(20);
+                    playerEntity.setRiptideTicks(20);
                     if (playerEntity.isOnGround()) {
                         playerEntity.move(MovementType.SELF, new Vec3d(0.0, 1.1999999284744263, 0.0));
                     }
@@ -98,7 +98,7 @@ public class MixTridentItem {
 
     @Unique private void createTrident(ItemStack stack, World world, PlayerEntity playerEntity) {
         TridentEntity tridentEntity = new TridentEntity(world, playerEntity, stack);
-        tridentEntity.setVelocity(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
+        tridentEntity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
         if (playerEntity.getAbilities().creativeMode) {
             tridentEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
         }
