@@ -5,7 +5,7 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TridentItem;
@@ -63,8 +63,8 @@ public class MixTridentItem {
                     k *= n / m;
                     l *= n / m;
                     playerEntity.addVelocity(h, k, l);
-                    playerEntity.setRiptideTicks(20);
-                    if (playerEntity.isOnGround()) {
+                    playerEntity.setPushCooldown(20);
+                    if (playerEntity.onGround) {
                         playerEntity.move(MovementType.SELF, new Vec3d(0.0, 1.1999999284744263, 0.0));
                     }
 
@@ -100,7 +100,7 @@ public class MixTridentItem {
         TridentEntity tridentEntity = new TridentEntity(world, playerEntity, stack);
         tridentEntity.setProperties(playerEntity, playerEntity.pitch, playerEntity.yaw, 0.0F, 2.5F, 1.0F);
         if (playerEntity.abilities.creativeMode) {
-            tridentEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
+            tridentEntity.pickupType = ProjectileEntity.PickupPermission.CREATIVE_ONLY;
         }
 
         world.spawnEntity(tridentEntity);
