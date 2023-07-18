@@ -13,6 +13,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.MathHelper;
@@ -63,8 +64,9 @@ public class MixTridentItem {
                     k *= n / m;
                     l *= n / m;
                     playerEntity.addVelocity(h, k, l);
-                    playerEntity.setPushCooldown(20);
+                    playerEntity.method_6018(20);
                     if (playerEntity.onGround) {
+                        float o = 1.1999999F;
                         playerEntity.move(MovementType.SELF, new Vec3d(0.0, 1.1999999284744263, 0.0));
                     }
 
@@ -89,10 +91,10 @@ public class MixTridentItem {
 
         ItemStack itemStack = user.getStackInHand(hand);
         if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
-            cir.setReturnValue(TypedActionResult.fail(itemStack));
+            cir.setReturnValue(new TypedActionResult(ActionResult.FAIL, itemStack));
         } else {
             user.setCurrentHand(hand);
-            cir.setReturnValue(TypedActionResult.consume(itemStack));
+            cir.setReturnValue(new TypedActionResult(ActionResult.SUCCESS, itemStack));
         }
     }
 
