@@ -17,11 +17,11 @@
 	"depends": {
 		"fabricloader": "*",
 		"fabric": "*",
-		"minecraft": ">=1.19",
+		"minecraft": "<=1.18.2 >=1.18",
 		"java": "*"
 	},
 	"suggests": {
-		"merenc": "*"
+		"ite": "*"
 	},
 	"authors": [ "Dplayend" ],
 	"custom": { "modmenu": { "links": { "modmenu.discord": "https://discord.gg/AsFE4T9FbN" } } }

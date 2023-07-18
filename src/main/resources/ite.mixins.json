@@ -2,8 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.dplayend.ite.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "mixins": [ "MixTridentItem" ],
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixTridentItem"
+  ],
   "client": [],
   "injectors": { "defaultRequire": 1 }
 }
