@@ -52,8 +52,8 @@ public class MixTridentItem {
                 }
                 if (EnchantmentHelper.getLevel(Enchantments.RIPTIDE, stack) > 0 && playerEntity.isTouchingWaterOrRain() && !playerEntity.isSneaking()) {
                     playerEntity.incrementStat(Stats.USED.getOrCreateStat(that));
-                    float f = playerEntity.getYaw();
-                    float g = playerEntity.getPitch();
+                    float f = playerEntity.yaw;
+                    float g = playerEntity.pitch;
                     float h = -MathHelper.sin(f * 0.017453292F) * MathHelper.cos(g * 0.017453292F);
                     float k = -MathHelper.sin(g * 0.017453292F);
                     float l = MathHelper.cos(f * 0.017453292F) * MathHelper.cos(g * 0.017453292F);
@@ -98,15 +98,15 @@ public class MixTridentItem {
 
     @Unique private void createTrident(ItemStack stack, World world, PlayerEntity playerEntity) {
         TridentEntity tridentEntity = new TridentEntity(world, playerEntity, stack);
-        tridentEntity.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, 2.5F, 1.0F);
-        if (playerEntity.getAbilities().creativeMode) {
+        tridentEntity.setProperties(playerEntity, playerEntity.pitch, playerEntity.yaw, 0.0F, 2.5F, 1.0F);
+        if (playerEntity.abilities.creativeMode) {
             tridentEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
         }
 
         world.spawnEntity(tridentEntity);
         world.playSoundFromEntity(null, tridentEntity, SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.PLAYERS, 1.0F, 1.0F);
-        if (!playerEntity.getAbilities().creativeMode) {
-            playerEntity.getInventory().removeOne(stack);
+        if (!playerEntity.abilities.creativeMode) {
+            playerEntity.inventory.removeOne(stack);
         }
     }
 }
